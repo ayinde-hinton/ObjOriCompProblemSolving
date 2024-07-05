@@ -1,0 +1,81 @@
+//**************************************************************
+//*** Title:Unit Converter
+//*** Course: Computational Problem Solving
+//*** Developer: Yin Hinton
+//*** Date: September 30, 2020
+//*** Description: converts polar input coordinates to rectangular input coordinates and vice versa.          
+//***
+//**************************************************************
+using namespace std;
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+
+#define pi 3.14159265
+
+float polarToRectangularX(float m, float ang) {
+   float x = m * cos(ang * (pi / 180.0));
+   return x;
+}
+float polarToRectangularY(float m, float ang) {
+   float y = m * sin(ang * (pi / 180.0));
+   return y;
+}
+float rectangularToPolarM(float x, float y) {
+    float m = sqrt(pow(x, 2) + pow(y, 2));
+    return m;
+}
+float rectangularToPolarAng(float x, float y) {
+// do I want to use pass by reference or something ... actually no separating functions is much easier than trying to understand pass by reference w/o experience
+    float ang = atan2(y, x);
+    return ang * (180.0 / pi);
+}
+
+
+int main() {
+   /* Type your code here. */
+char userCoordsType;
+float x;
+float y;
+float m;
+float ang;
+bool end = 0;
+cin >> userCoordsType;
+
+do {
+switch (userCoordsType) {
+//maybe take q out of while loop and place in case statement, but continuous check sugests otherwise
+//figure out set precision/ width
+   case 'P':  
+   case 'p':
+      cin >> m;
+      cin >> ang;
+      cout << fixed << setprecision(2);
+      cout << "POL -> REC +++++++++++++++" << endl;
+      cout << " POL: M =    " << m << " A =    " << ang 
+           << " REC: X =    " << polarToRectangularX(m, ang) << " Y =    " << polarToRectangularY(m, ang) << endl;
+      //cout << polarToRectangularX(m, ang) << ", " << polarToRectangularY(m, ang) << endl;
+      break;
+   case 'R':  
+   case 'r': 
+      cin >> x;
+      cin >> y;
+      cout << fixed << setprecision(2);
+      cout << "REC -> POL +++++++++++++++" << endl; 
+      cout << " REC: X =    " << x << " Y =    " << y 
+           << " POL: M =    " << rectangularToPolarM(x, y) << " A =    " << rectangularToPolarAng(x, y) << endl;  
+      //cout <<rectangularToPolarM(x, y) << ", " << rectangularToPolarAng(x, y) << endl;
+      break;
+   case 'Q':  
+   case 'q':
+      end = 1;
+      break;
+   default:  
+      cin >> m;
+      cin >> ang;
+      cout << "Format Error!" << endl;
+ }
+ cin >> userCoordsType;
+} while (end != 1);
+   return 0;
+}

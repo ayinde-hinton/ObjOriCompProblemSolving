@@ -1,0 +1,28 @@
+//**************************************************************
+//*** Title:Connect 4
+//*** Course: Computational Problem Solving
+//*** Developer: Yin Hinton
+//*** Date: November 1, 2020
+//*** Description: plays connect 4.          
+//**************************************************************
+// connection game 
+using namespace std;
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+
+int main() {
+// welcome message
+cout << "Welcome to ConnectFour" << endl << "The goal of ConnectFour is to be the first player to place four marks in a row" << endl << "-- the row can be either vertical, horizontal, or diagonal" << endl;
+//2 players and turns
+
+// if four connect vertically win
+
+// if four connect horizontally win
+
+// if four connect diagonally win
+
+// if all spaces fill then tie
+
+   return 0;
+}
